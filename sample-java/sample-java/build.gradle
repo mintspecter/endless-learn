@@ -1,0 +1,37 @@
+plugins {
+    id 'java'
+}
+
+group 'dev.mintspecter'
+version '1.0-SNAPSHOT'
+
+repositories {
+    maven {
+        url "https://repo.osgeo.org/repository/release/"
+        mavenContent {
+            releasesOnly()
+        }
+    }
+    maven {
+        url "https://repo.osgeo.org/repository/snapshot/"
+        mavenContent {
+            snapshotsOnly()
+        }
+    }
+    maven { url 'https://download.osgeo.org/webdav/geotools/' }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.geotools:gt-main:27-SNAPSHOT'
+    implementation 'org.geotools:gt-shapefile:27-SNAPSHOT'
+    implementation 'org.geotools:gt-epsg-hsql:27-SNAPSHOT'
+    implementation 'org.geotools:gt-render:27-SNAPSHOT'
+    implementation 'org.geotools:gt-swing:27-SNAPSHOT'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
